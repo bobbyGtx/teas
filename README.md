@@ -8,5 +8,5 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The appli
 
 ## Build for github pages in production branch 
 
-Run `npm run build-gh` to build the project. The build artifacts will be stored in the `ghdist/` directory.
+Run `npm run build-gh` to build the project. The build artifacts will be stored in the `docs/` directory.
 

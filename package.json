@@ -5,7 +5,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "build-gh": "ng build --output-path ghdist --base-href /teas/",
+    "build-gh": "ng build --output-path docs --base-href /teas/",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
