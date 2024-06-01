@@ -1,40 +1,38 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { OrderComponent } from './components/pages/order/order.component';
-import { MainComponent } from './components/pages/main/main.component';
-import { ProductComponent } from './components/pages/product/product.component';
-import { CatalogComponent } from './components/pages/catalog/catalog.component';
-import { HeaderComponent } from './components/common/header/header.component';
-import { FooterComponent } from './components/common/footer/footer.component';
-import { ProductCardComponent } from './components/common/product-card/product-card.component';
-import {ProductService} from "./services/product.service";
-import { ShortPipe } from './pipes/short.pipe';
+import {AppRoutingModule} from './app-routing.module';
+import {AppComponent} from './app.component';
+import {HeaderComponent} from './shared/layouts/header/header.component';
+import {FooterComponent} from './shared/layouts/footer/footer.component';
+import {ProductService} from "./shared/services/product.service";
 import {HttpClientModule} from "@angular/common/http";
-import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {SharedModule} from "./shared/shared.module";
+import {OrderModule} from "./views/order/order.module";
+import {FormsModule} from "@angular/forms";
+import {ProductsModule} from "./views/products/products.module";
+import {MainModule} from "./views/main/main.module";
 
 @NgModule({
   declarations: [
-    AppComponent,
-    OrderComponent,
-    MainComponent,
-    ProductComponent,
-    CatalogComponent,
     HeaderComponent,
     FooterComponent,
-    ProductCardComponent,
-    ShortPipe,
+    AppComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     HttpClientModule,
+    SharedModule,
+    NgbModule,
     FormsModule,
-    ReactiveFormsModule
+    OrderModule,
+    MainModule,
+    ProductsModule,
+    AppRoutingModule
   ],
   providers: [ProductService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

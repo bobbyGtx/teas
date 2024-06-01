@@ -1,9 +1,9 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormBuilder, Validators} from "@angular/forms";
-import {Observable, observable, Subscription, tap} from "rxjs";
-import {CommonService} from "../../../services/common.service";
+import {Observable, Subscription, tap} from "rxjs";
+import {CommonService} from "../../shared/services/common.service";
 import {Router} from "@angular/router";
-import {ProductService} from "../../../services/product.service";
+import {ProductService} from "../../shared/services/product.service";
 
 @Component({
   selector: 'order-component',
@@ -70,6 +70,7 @@ export class OrderComponent implements OnInit, OnDestroy {
   }
 
   sendForm() {
+    if(!this.orderForm.valid) return;
     this.requestStatus = true;
     this.subscriptionOrder = this.productService.createOrder(
       this.orderForm.get('firstName')!.value!,
@@ -103,9 +104,7 @@ export class OrderComponent implements OnInit, OnDestroy {
           });
         }
       });
-
   }
-
 
   ngOnDestroy() {
     this.subscriptionOrder?.unsubscribe();

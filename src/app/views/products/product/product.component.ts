@@ -1,9 +1,9 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {ActivatedRoute, Router} from "@angular/router";
-import {ProductType} from "../../../types/product.type";
-import {ProductService} from "../../../services/product.service";
+import {ProductType} from "../../../../types/product.type";
+import {ProductService} from "../../../shared/services/product.service";
 import {Subscription} from "rxjs";
-import {CommonService} from "../../../services/common.service";
+import {CommonService} from "../../../shared/services/common.service";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'product-component',
