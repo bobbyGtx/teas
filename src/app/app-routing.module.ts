@@ -6,7 +6,7 @@ const routes: Routes = [
     path: '',
     children:[
       {path:'', loadChildren:()=>import('./views/main/main.module').then(m => m.MainModule)},
-      {path:'', loadChildren:()=>import('./views/order/order.module').then(m => m.OrderModule)},
+      {path:'order', loadChildren:()=>import('./views/order/order.module').then(m => m.OrderModule)},
     ]
   },
   {path: '**', redirectTo:''},
