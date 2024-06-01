@@ -10,7 +10,6 @@ import {HttpClientModule} from "@angular/common/http";
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {SharedModule} from "./shared/shared.module";
 import {FormsModule} from "@angular/forms";
-import {ProductsModule} from "./views/products/products.module";
 
 @NgModule({
   declarations: [
@@ -24,7 +23,6 @@ import {ProductsModule} from "./views/products/products.module";
     SharedModule,
     NgbModule,
     FormsModule,
-    ProductsModule,
     AppRoutingModule
   ],
   providers: [ProductService],
