@@ -9,10 +9,8 @@ import {ProductService} from "./shared/services/product.service";
 import {HttpClientModule} from "@angular/common/http";
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {SharedModule} from "./shared/shared.module";
-import {OrderModule} from "./views/order/order.module";
 import {FormsModule} from "@angular/forms";
 import {ProductsModule} from "./views/products/products.module";
-import {MainModule} from "./views/main/main.module";
 
 @NgModule({
   declarations: [
@@ -26,8 +24,6 @@ import {MainModule} from "./views/main/main.module";
     SharedModule,
     NgbModule,
     FormsModule,
-    OrderModule,
-    MainModule,
     ProductsModule,
     AppRoutingModule
   ],
