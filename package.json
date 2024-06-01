@@ -1,10 +1,11 @@
 {
-  "name": "kontrolwork22",
+  "name": "kontrolwork23",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "build-gh": "ng build --output-path ghdist --base-href /teas/",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
