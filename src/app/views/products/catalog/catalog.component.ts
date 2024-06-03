@@ -12,11 +12,10 @@ import {ActivatedRoute, Router} from "@angular/router";
 export class CatalogComponent implements OnInit, OnDestroy {
   public products: ProductType[] = [];
   public loaderShow: boolean = false;
-  private subscriptionFilter: Subscription | null = null;
-  private subscriptionFilterSubject: Subscription | null = null;
   public filter: boolean = false;
   public filterParam: string = '';
-  private subscriptionParams: Subscription | null = null;
+  //private subscriptionParams: Subscription | null = null;
+  private subscription$: Subscription=new Subscription();
 
 
   constructor(private productService: ProductService, private router: Router, private activatedRoute: ActivatedRoute) {
@@ -25,11 +24,10 @@ export class CatalogComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     //Подписка на Subject
-
-    this.productService.filterSubject$.subscribe((params) => {
+    this.subscription$.add(this.productService.filterSubject$.subscribe((params) => {
       this.loaderShow = true;
       this.filterParam=params?params:'';
-      this.subscriptionFilter = this.productService.getProducts(this.filterParam).subscribe({
+      this.subscription$.add(this.productService.getProducts(this.filterParam).subscribe({
         next: data => {
           this.products = data;
           this.productService.products = data;
@@ -41,24 +39,21 @@ export class CatalogComponent implements OnInit, OnDestroy {
           this.loaderShow = false;
           this.router.navigate(['/']).then();
         }
-      });
-    });
-
+      }));
+    }));
     //Подписка на получение QueryParams в URL
-    this.subscriptionParams = this.activatedRoute.queryParams.subscribe((params) => {
+    this.subscription$.add(this.activatedRoute.queryParams.subscribe((params) => {
       if (params['search']) {
         this.filterParam = params['search'];
         this.productService.filterSubject$.next(this.filterParam);
       } else {
         this.productService.filterSubject$.next(null);
       }
-    });
+    }));
   }
 
   ngOnDestroy() {
-    this.subscriptionParams?.unsubscribe();
-    this.subscriptionFilter?.unsubscribe();
-    this.subscriptionFilterSubject?.unsubscribe();
+    this.subscription$.unsubscribe();
   }
 
 }
