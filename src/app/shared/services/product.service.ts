@@ -16,15 +16,10 @@ export class ProductService {
   }
 
   getProducts( filter?:string): Observable<ProductType[]> {
-    if (filter){
-      let params = new HttpParams();
-      params=params.set('search',filter);
-      return this.http.get<ProductType[]>('https://testologia.ru/tea',{params:params});
-    }else{
-      return this.http.get<ProductType[]>('https://testologia.ru/tea');
-    }
+    let params = new HttpParams();
+    if (filter)params=params.set('search',filter);
+    return this.http.get<ProductType[]>('https://testologia.ru/tea',{params});
   }
-
 
   getProduct(id: number): ProductType | undefined {
     return this.products.find(product => product.id === id);
